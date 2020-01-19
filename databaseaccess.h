@@ -20,9 +20,6 @@ class DatabaseAccess : public QObject
         int insertAirfield(const QString&, const QString&);
         void insertObstracle(int idAirfield, QMap<QString, QString> obstracle);
 
-    public slots:
-        void update(const QString&, const QString&, QVector<QVector<QString>> obs = QVector<QVector<QString>>());
-
     private:
         DatabaseAccess(QObject *parent = nullptr);
         DatabaseAccess(const DatabaseAccess&);

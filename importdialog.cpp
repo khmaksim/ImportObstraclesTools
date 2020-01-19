@@ -27,7 +27,7 @@ void ImportDialog::selectFile()
         qDebug() << "Empty name open file";
         return;
     }
-    ui->fileLineEdit->setText(nameFile);
+    ui->fileLineEdit->setText(QDir::toNativeSeparators(nameFile));
 }
 
 void ImportDialog::enableButton()
@@ -48,4 +48,14 @@ QString ImportDialog::getAirfield() const
 QString ImportDialog::getCodeICAO() const
 {
     return ui->codeIcaoLineEdit->text().simplified();
+}
+
+QString ImportDialog::getLatitude() const
+{
+    return ui->northRadioButton->isChecked() ? tr("n") : tr("s");
+}
+
+QString ImportDialog::getLongetude() const
+{
+    return ui->eastRadioButton->isChecked() ? tr("e") : tr("w");
 }

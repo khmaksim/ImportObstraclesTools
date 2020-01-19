@@ -299,7 +299,7 @@ void ObstraclesForm::exportToFile()
             if (sortSearchFilterObstracleModel->index(row, 2).data(Qt::DisplayRole).toString().contains("Естественное препятствие"))
                 out << "2" << endl;
             else if (sortSearchFilterObstracleModel->index(row, 6).data().isValid() && sortSearchFilterObstracleModel->index(row, 7).data().isValid())
-                out << (sortSearchFilterObstracleModel->index(row, 20).data().toString().contains(QRegExp("(да|есть)")) ? "1" : "0") << endl;
+                out << (sortSearchFilterObstracleModel->index(row, 20).data().toString().contains(QRegExp("(да|есть|свет)")) ? "1" : "0") << endl;
             else if (sortSearchFilterObstracleModel->index(row, 8).data().isValid() && sortSearchFilterObstracleModel->index(row, 9).data().isValid())
                 out << "3" << endl;
             out << "1" << endl;
@@ -372,8 +372,8 @@ void ObstraclesForm::showObstracles(QVariant coordinate, QVariant radius)
             if (sortSearchFilterObstracleModel->index(row, 2).data(Qt::DisplayRole).toString().contains("Естественное препятствие"))
                 obstraclePoint.type = ObstraclePoint::NATURAL;
             else if (sortSearchFilterObstracleModel->index(row, 6).data().isValid() && sortSearchFilterObstracleModel->index(row, 7).data().isValid()) {
-                if (sortSearchFilterObstracleModel->index(row, 17).data(Qt::DisplayRole).toString().contains(QRegExp("да|есть")) ||
-                        sortSearchFilterObstracleModel->index(row, 20).data(Qt::DisplayRole).toString().contains(QRegExp("да|есть")))
+                if (sortSearchFilterObstracleModel->index(row, 17).data(Qt::DisplayRole).toString().contains(QRegExp("да|есть|свет")) ||
+                        sortSearchFilterObstracleModel->index(row, 20).data(Qt::DisplayRole).toString().contains(QRegExp("да|есть|свет")))
                     obstraclePoint.type = ObstraclePoint::ARTIFICIAL_MARKING;
                 else
                     obstraclePoint.type = ObstraclePoint::ARTIFICIAL;
@@ -421,6 +421,8 @@ void ObstraclesForm::importData()
     if (importDialog->exec() == QDialog::Accepted) {
         int idRecordAirfield = DatabaseAccess::getInstance()->insertAirfield(importDialog->getAirfield(), importDialog->getCodeICAO());
 
+        QString latStr = importDialog->getLatitude();
+        QString lonStr = importDialog->getLongetude();
         Document doc(importDialog->getFileName());
         if (!doc.load())
             return;
@@ -443,12 +445,36 @@ void ObstraclesForm::importData()
 
             wsheet->getFullCells(&maxRow, &maxCol);
 
-            for (int row = 1; row < maxRow; row++)
-                for (int col = 1; col < maxCol; col++) {
+            QMap<QString, QString> values;
+            for (int row = 1; row < maxRow; row++) {
+                for (int col = 1; col <= maxCol; col++) {
                     QVariant var = doc.read(row, col);
-                    // check type of var for more information
-                    qDebug() << var.toString();
+
+                    switch (col) {
+                        case 1:
+                            values.insert("id", var.toString());
+                            break;
+                        case 2:
+                            values.insert("name", var.toString());
+                            break;
+                        case 3:
+                            values.insert("latitude", var.toString().prepend(latStr));
+                            break;
+                        case 4:
+                            values.insert("longitude", var.toString().prepend(lonStr));
+                            break;
+                        case 5:
+                            values.insert("orthometric_height", var.toString());
+                            break;
+                        case 6:
+                            values.insert("night_marking", var.toString());
+                            break;
+                    }
                 }
+                DatabaseAccess::getInstance()->insertObstracle(idRecordAirfield, values);
+                values.clear();
+            }
         }
-    }
+        updateModelAirfields();
+    }    
 }

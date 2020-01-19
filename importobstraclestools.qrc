@@ -16,7 +16,7 @@
         <file>res/img/G.png</file>
     </qresource>
     <qresource prefix="/translations">
-        <file>res/translations/aviacominfotools_ru.qm</file>
+        <file>res/translations/importobstraclestools_ru.qm</file>
     </qresource>
     <qresource prefix="/qml">
         <file>mapview.qml</file>

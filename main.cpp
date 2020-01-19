@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 //    qDebug() << QSslSocket::supportsSsl() << QSslSocket::sslLibraryBuildVersionString() << QSslSocket::sslLibraryVersionString();
 
     QTranslator translator;
-    if (translator.load(QLocale(), QLatin1String("aviacominfotools"), QLatin1String("_"), QLatin1String(":/translations/res/translations")))
+    if (translator.load(QLocale(), QLatin1String("importobstraclestools"), QLatin1String("_"), QLatin1String(":/translations/res/translations")))
         a.installTranslator(&translator);
 
     MainWindow w;

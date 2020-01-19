@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network sql quick
+QT       += core gui sql quick network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -76,8 +76,7 @@ FORMS += \
     sidebar.ui \
     mainwindow.ui
 
-RESOURCES += \
-    importobstraclestools.qrc
+RESOURCES += importobstraclestools.qrc
 
 TRANSLATIONS = importobstraclestools_ru.ts
 

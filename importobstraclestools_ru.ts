@@ -30,6 +30,109 @@
     </message>
 </context>
 <context>
+    <name>ImportDialog</name>
+    <message>
+        <location filename="importdialog.ui" line="14"/>
+        <source>Import obstracles</source>
+        <translation>Импорт препятствий</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="41"/>
+        <source>Import</source>
+        <translation>Импорт</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="48"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="60"/>
+        <source>File:</source>
+        <translation>Файл:</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="95"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="104"/>
+        <source>Code ICAO:</source>
+        <translation>Код ИКАО:</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="127"/>
+        <source>Name airfield:</source>
+        <translation>Название аэродрома:</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="137"/>
+        <source>Coordinates</source>
+        <translation>Координаты</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="143"/>
+        <source>Latitude</source>
+        <translation>Широта</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="152"/>
+        <source>north</source>
+        <translation>северная</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="162"/>
+        <source>south</source>
+        <translation>южная</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="172"/>
+        <source>Longitude</source>
+        <translation>Долгота</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="181"/>
+        <source>east</source>
+        <translation>восточная</translation>
+    </message>
+    <message>
+        <location filename="importdialog.ui" line="191"/>
+        <source>west</source>
+        <translation>западная</translation>
+    </message>
+    <message>
+        <location filename="importdialog.cpp" line="25"/>
+        <source>Import from Excel file</source>
+        <translation>Импорт из Excel файла</translation>
+    </message>
+    <message>
+        <location filename="importdialog.cpp" line="25"/>
+        <source>Excel files (*.xlsx)</source>
+        <translation>Excel файлы (*.xlsx)</translation>
+    </message>
+    <message>
+        <location filename="importdialog.cpp" line="55"/>
+        <source>n</source>
+        <translation>с</translation>
+    </message>
+    <message>
+        <location filename="importdialog.cpp" line="55"/>
+        <source>s</source>
+        <translation>ю</translation>
+    </message>
+    <message>
+        <location filename="importdialog.cpp" line="60"/>
+        <source>e</source>
+        <translation>в</translation>
+    </message>
+    <message>
+        <location filename="importdialog.cpp" line="60"/>
+        <source>w</source>
+        <translation>з</translation>
+    </message>
+</context>
+<context>
     <name>MainWidget</name>
     <message>
         <source>Obstracle</source>
@@ -43,9 +146,13 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.ui" line="14"/>
         <source>AviacominfoTools</source>
-        <translation>AviacominfoTools</translation>
+        <translation type="vanished">AviacominfoTools</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="14"/>
+        <source>ImportObstraclesTools</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="46"/>
@@ -77,7 +184,7 @@
         <translation>Препятствия</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="46"/>
+        <location filename="obstraclesform.cpp" line="44"/>
         <source>Export</source>
         <translation>Экспорт</translation>
     </message>
@@ -90,37 +197,33 @@
         <translation type="vanished">На карте</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="52"/>
+        <location filename="obstraclesform.cpp" line="55"/>
         <source>Unhide</source>
         <translation>Отобразить</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="57"/>
         <source>Update setup</source>
-        <translation>Настройки обновления</translation>
+        <translation type="vanished">Настройки обновления</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="62"/>
         <source>Forced update</source>
-        <translation>Принудительное обновление</translation>
+        <translation type="vanished">Принудительное обновление</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="68"/>
         <source>Export to Excel</source>
-        <translation>Экспорт в Excel</translation>
+        <translation type="vanished">Экспорт в Excel</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="74"/>
         <source>Export DB to Excel</source>
-        <translation>Экспорт БД в Excel</translation>
+        <translation type="vanished">Экспорт БД в Excel</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="89"/>
+        <location filename="obstraclesform.cpp" line="67"/>
         <source>Total obstracles: 0</source>
         <translation>Всего препятствий: 0</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="90"/>
+        <location filename="obstraclesform.cpp" line="68"/>
         <source>Selected obstacles: 0</source>
         <translation>Выбрано препятствий: 0</translation>
     </message>
@@ -129,53 +232,58 @@
         <translation type="vanished">Дата обновления: </translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="118"/>
+        <location filename="obstraclesform.cpp" line="49"/>
+        <source>Import</source>
+        <translation>Импорт</translation>
+    </message>
+    <message>
+        <location filename="obstraclesform.cpp" line="96"/>
         <source>*</source>
         <translation>*</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="119"/>
+        <location filename="obstraclesform.cpp" line="97"/>
         <source>ID</source>
         <translation>Идентификатор</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="120"/>
+        <location filename="obstraclesform.cpp" line="98"/>
         <source>Name</source>
         <translation>Наименование</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="121"/>
+        <location filename="obstraclesform.cpp" line="99"/>
         <source>Type of
  configuration</source>
         <translation>Тип 
 конфигурации</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="122"/>
+        <location filename="obstraclesform.cpp" line="100"/>
         <source>Human
  settlement</source>
         <translation>Ближайший
 населенный пункт</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="123"/>
+        <location filename="obstraclesform.cpp" line="101"/>
         <source>Location options | coordinate
  system</source>
         <translation>Параметры местоположения | система
 координат</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="124"/>
+        <location filename="obstraclesform.cpp" line="102"/>
         <source>Location options | latitude</source>
         <translation>Параметры местоположения | широта</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="125"/>
+        <location filename="obstraclesform.cpp" line="103"/>
         <source>Location options | longitude</source>
         <translation>Параметры местоположения | долгота</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="126"/>
+        <location filename="obstraclesform.cpp" line="104"/>
         <source>Location options | latitude of
  center of
  arc/circle</source>
@@ -184,7 +292,7 @@
 дуги/круга</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="127"/>
+        <location filename="obstraclesform.cpp" line="105"/>
         <source>Location options | longitude of
  center of
  arc/circle</source>
@@ -193,203 +301,188 @@
 дуги/круга</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="128"/>
+        <location filename="obstraclesform.cpp" line="106"/>
         <source>Location options | arc/circle
  radius (m)</source>
         <translation>Параметры местоположения | радиус
 дуги/круга (м)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="129"/>
+        <location filename="obstraclesform.cpp" line="107"/>
         <source>Location options | horizontal
  accuracy (m)</source>
         <translation>Параметры местоположения | точность по
 горизонтали (м)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="130"/>
+        <location filename="obstraclesform.cpp" line="108"/>
         <source>Height | orthometric
  height MSL (m)</source>
         <translation>Высота | ортометрическая
 высота MSL (м)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="131"/>
+        <location filename="obstraclesform.cpp" line="109"/>
         <source>Height | relative
  height AGL (m)</source>
         <translation>Высота | относительная
 высота AGL (м)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="132"/>
+        <location filename="obstraclesform.cpp" line="110"/>
         <source>Height | vertical
  accuracy (m)</source>
         <translation>Высота | точность по
 вертикали (м)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="133"/>
+        <location filename="obstraclesform.cpp" line="111"/>
         <source>Design parameters | type of
  material</source>
         <translation>Конструкционные параметры | тип
 материала</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="134"/>
+        <location filename="obstraclesform.cpp" line="112"/>
         <source>Design parameters | fragility</source>
         <translation>Конструкционные параметры | ломкость</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="135"/>
+        <location filename="obstraclesform.cpp" line="113"/>
         <source>Marking day | Yes/no</source>
         <translation>Маркировка дневная | есть/нет</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="136"/>
+        <location filename="obstraclesform.cpp" line="114"/>
         <source>Marking day | template</source>
         <translation>Маркировка дневная | шаблон</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="137"/>
+        <location filename="obstraclesform.cpp" line="115"/>
         <source>Marking day | color</source>
         <translation>Маркировка дневная | цвет(а)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="138"/>
+        <location filename="obstraclesform.cpp" line="116"/>
         <source>Night marking | Yes/no</source>
         <translation>Маркировка ночная | есть/нет</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="139"/>
+        <location filename="obstraclesform.cpp" line="117"/>
         <source>Night marking | color</source>
         <translation>Маркировка ночная | цвет</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="140"/>
+        <location filename="obstraclesform.cpp" line="118"/>
         <source>Night marking | type of
  light</source>
         <translation>Маркировка ночная | вид
 светоограждения</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="141"/>
+        <location filename="obstraclesform.cpp" line="119"/>
         <source>Night marking | intensity</source>
         <translation>Маркировка ночная | интенсивность</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="142"/>
+        <location filename="obstraclesform.cpp" line="120"/>
         <source>Night marking | lights working
  time</source>
         <translation>Маркировка ночная | время работы
 огней</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="143"/>
+        <location filename="obstraclesform.cpp" line="121"/>
         <source>Night marking | compliance
  14 ADJ. ICAO</source>
         <translation>Маркировка ночная | соответствие
 14 Прил. ICAO</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="144"/>
+        <location filename="obstraclesform.cpp" line="122"/>
         <source>Data source | supplier</source>
         <translation>Источник данных | поставщик</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="145"/>
+        <location filename="obstraclesform.cpp" line="123"/>
         <source>Data source | date of
  submission</source>
         <translation>Источник данных | дата
 представления</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="238"/>
-        <location filename="obstraclesform.cpp" line="476"/>
         <source>Date updated: %1</source>
-        <translation>Дата обновления: %1</translation>
+        <translation type="vanished">Дата обновления: %1</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="318"/>
+        <location filename="obstraclesform.cpp" line="274"/>
         <source>Save file</source>
         <translation>Сохранить файл</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="350"/>
         <source>Export to XLSX file</source>
-        <translation>Экспорт в XLSX файл</translation>
+        <translation type="vanished">Экспорт в XLSX файл</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="350"/>
         <source>Excel format (*.xlsx)</source>
-        <translation>Excel формат (*.xlsx)</translation>
+        <translation type="vanished">Excel формат (*.xlsx)</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="356"/>
         <source>Write files...</source>
-        <translation>Запись файла...</translation>
+        <translation type="vanished">Запись файла...</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="356"/>
         <source>Cancel</source>
-        <translation>Отмена</translation>
+        <translation type="vanished">Отмена</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="466"/>
+        <location filename="obstraclesform.cpp" line="396"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="466"/>
+        <location filename="obstraclesform.cpp" line="396"/>
         <source>You must select the obstacles displayed in the table!</source>
         <translation>Необходимо выбрать препятствия, отображаемые в таблице!</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="477"/>
         <source>Information</source>
-        <translation>Информация</translation>
+        <translation type="vanished">Информация</translation>
     </message>
     <message>
-        <location filename="obstraclesform.cpp" line="477"/>
         <source>Obstacle database updated!</source>
-        <translation>База данных препятствий обновлена!</translation>
+        <translation type="vanished">База данных препятствий обновлена!</translation>
     </message>
 </context>
 <context>
     <name>SettingsObstraclesDialog</name>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="14"/>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation type="vanished">Настройки</translation>
     </message>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="33"/>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="vanished">Сохранить</translation>
     </message>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="40"/>
         <source>Cancel</source>
-        <translation>Отмена</translation>
+        <translation type="vanished">Отмена</translation>
     </message>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="47"/>
         <source>Update rate</source>
-        <translation>Период обновления</translation>
+        <translation type="vanished">Период обновления</translation>
     </message>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="53"/>
         <source>once a day</source>
-        <translation>раз в день</translation>
+        <translation type="vanished">раз в день</translation>
     </message>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="63"/>
         <source>once a week</source>
-        <translation>раз в неделю</translation>
+        <translation type="vanished">раз в неделю</translation>
     </message>
     <message>
-        <location filename="settingsobstraclesdialog.ui" line="70"/>
         <source>once a month</source>
-        <translation>раз в месяц</translation>
+        <translation type="vanished">раз в месяц</translation>
     </message>
 </context>
 <context>

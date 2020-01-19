@@ -17,6 +17,8 @@ class ImportDialog : public QDialog
         QString getFileName() const;
         QString getAirfield() const;
         QString getCodeICAO() const;
+        QString getLatitude() const;
+        QString getLongetude() const;
 
     private:
         Ui::ImportDialog *ui;
