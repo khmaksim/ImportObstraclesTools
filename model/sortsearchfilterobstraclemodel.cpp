@@ -51,11 +51,11 @@ bool SortSearchFilterObstracleModel::filterAcceptsRow(int sourceRow, const QMode
 
     if (markingDay)
         result &= sourceModel()->data(sourceModel()->index(sourceRow, 17, sourceParent))
-                  .toString().contains(QRegExp("да|есть"));
+                  .toString().contains(QRegExp("да|есть|свет"));
 
     if (nightMarking)
         result &= sourceModel()->data(sourceModel()->index(sourceRow, 20, sourceParent))
-                  .toString().contains(QRegExp("да|есть"));
+                  .toString().contains(QRegExp("да|есть|свет"));
 
     if (lat > 0 && lon > 0 && radius > 0) {
         double latObstracle = 0;
