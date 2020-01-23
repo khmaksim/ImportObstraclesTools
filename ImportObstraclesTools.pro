@@ -47,7 +47,6 @@ SOURCES += \
     mainwindow.cpp \
     delegate\listitemdelegate.cpp \
     delegate\checkboxitemdelegate.cpp \
-    delegate\obstraclestyleditemdelegate.cpp \
     model\searchmodel.cpp \
     model\tablemodel.cpp \
     model\sortsearchfilterobstraclemodel.cpp
@@ -64,7 +63,6 @@ HEADERS += \
     mainwindow.h \
     delegate\listitemdelegate.h \
     delegate\checkboxitemdelegate.h \
-    delegate\obstraclestyleditemdelegate.h \
     model\searchmodel.h \
     model\tablemodel.h \
     model\sortsearchfilterobstraclemodel.h \

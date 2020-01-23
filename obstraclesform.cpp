@@ -21,7 +21,6 @@
 #include "sidebar.h"
 #include "sortsearchfilterobstraclemodel.h"
 #include "checkboxitemdelegate.h"
-#include "obstraclestyleditemdelegate.h"
 #include "mapview.h"
 #include "helper.h"
 #include "importdialog.h"
@@ -128,10 +127,8 @@ ObstraclesForm::ObstraclesForm(QWidget *parent) :
     ui->tableView->horizontalHeader()->setSortIndicatorShown(true);
     ui->tableView->horizontalHeader()->setSectionsClickable(true);
     ui->tableView->setItemDelegateForColumn(0, new CheckboxItemDelegate(this));
-    ui->tableView->setItemDelegate(new ObstracleStyledItemDelegate(this));
 
     updateModelAirfields();
-
     readSettings();
 
     connect(ui->listView, SIGNAL(clicked(QModelIndex)), sideBar, SLOT(resetFilter()));
@@ -299,7 +296,7 @@ void ObstraclesForm::exportToFile()
             if (sortSearchFilterObstracleModel->index(row, 2).data(Qt::DisplayRole).toString().contains("Естественное препятствие"))
                 out << "2" << endl;
             else if (sortSearchFilterObstracleModel->index(row, 6).data().isValid() && sortSearchFilterObstracleModel->index(row, 7).data().isValid())
-                out << (sortSearchFilterObstracleModel->index(row, 20).data().toString().contains(QRegExp("(да|есть|свет)")) ? "1" : "0") << endl;
+                out << (sortSearchFilterObstracleModel->index(row, 20).data().toString().contains(QRegExp("1")) ? "1" : "0") << endl;
             else if (sortSearchFilterObstracleModel->index(row, 8).data().isValid() && sortSearchFilterObstracleModel->index(row, 9).data().isValid())
                 out << "3" << endl;
             out << "1" << endl;
@@ -372,8 +369,8 @@ void ObstraclesForm::showObstracles(QVariant coordinate, QVariant radius)
             if (sortSearchFilterObstracleModel->index(row, 2).data(Qt::DisplayRole).toString().contains("Естественное препятствие"))
                 obstraclePoint.type = ObstraclePoint::NATURAL;
             else if (sortSearchFilterObstracleModel->index(row, 6).data().isValid() && sortSearchFilterObstracleModel->index(row, 7).data().isValid()) {
-                if (sortSearchFilterObstracleModel->index(row, 17).data(Qt::DisplayRole).toString().contains(QRegExp("да|есть|свет")) ||
-                        sortSearchFilterObstracleModel->index(row, 20).data(Qt::DisplayRole).toString().contains(QRegExp("да|есть|свет")))
+                if (sortSearchFilterObstracleModel->index(row, 17).data(Qt::DisplayRole).toString().contains(QRegExp("1")) ||
+                        sortSearchFilterObstracleModel->index(row, 20).data(Qt::DisplayRole).toString().contains(QRegExp("1")))
                     obstraclePoint.type = ObstraclePoint::ARTIFICIAL_MARKING;
                 else
                     obstraclePoint.type = ObstraclePoint::ARTIFICIAL;
