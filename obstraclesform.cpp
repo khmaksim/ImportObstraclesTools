@@ -455,10 +455,10 @@ void ObstraclesForm::importData()
                             values.insert("name", var.toString());
                             break;
                         case 3:
-                            values.insert("latitude", var.toString().prepend(latStr));
+                            values.insert("latitude", QString::number(var.toString().toDouble(), 'f', 1).prepend(latStr));
                             break;
                         case 4:
-                            values.insert("longitude", var.toString().prepend(lonStr));
+                            values.insert("longitude", QString::number(var.toString().toDouble(), 'f', 1).prepend(lonStr));
                             break;
                         case 5:
                             values.insert("orthometric_height", var.toString());
