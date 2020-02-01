@@ -7,54 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>425</width>
-    <height>218</height>
+    <height>277</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Import obstracles</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="codeIcaoLineEdit"/>
-   </item>
-   <item row="5" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>201</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="importButton">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Import</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancelButton">
-       <property name="text">
-        <string>Cancel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="nameAirfieldLineEdit"/>
-   </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>File:</string>
@@ -80,35 +40,10 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="1" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLineEdit" name="fileLineEdit">
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="selectFileButton">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="codeIcaoLineEdit"/>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Code ICAO:</string>
-     </property>
-     <property name="buddy">
-      <cstring>codeIcaoLineEdit</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -121,20 +56,10 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Name airfield:</string>
-     </property>
-     <property name="buddy">
-      <cstring>nameAirfieldLineEdit</cstring>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="3">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Coordinates</string>
+      <string>Settings coordinates</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
@@ -198,6 +123,110 @@
      </layout>
     </widget>
    </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="nameAirfieldLineEdit"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Name airfield:</string>
+     </property>
+     <property name="buddy">
+      <cstring>nameAirfieldLineEdit</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>201</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="importButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Import</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Code ICAO:</string>
+     </property>
+     <property name="buddy">
+      <cstring>codeIcaoLineEdit</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLineEdit" name="fileLineEdit">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="selectFileButton">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>Coordinates KTA (AD, PP)</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Latitude:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="latitudeKtaLineEdit"/>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="longitudeKtaLineEdit"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Longitude:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -207,6 +236,8 @@
   <tabstop>southRadioButton</tabstop>
   <tabstop>eastRadioButton</tabstop>
   <tabstop>westRadioButton</tabstop>
+  <tabstop>latitudeKtaLineEdit</tabstop>
+  <tabstop>longitudeKtaLineEdit</tabstop>
   <tabstop>fileLineEdit</tabstop>
   <tabstop>selectFileButton</tabstop>
   <tabstop>importButton</tabstop>

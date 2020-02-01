@@ -6,7 +6,7 @@
 #include <QVector>
 
 struct ObstraclePoint {
-        enum TypeObstraction { NATURAL, ARTIFICIAL, ARTIFICIAL_MARKING, GROUP};
+        enum TypeObstraction { NATURAL, ARTIFICIAL, ARTIFICIAL_MARKING, GROUP, KTA };
 
         QString id;
         double lat;

@@ -378,6 +378,13 @@ void ObstraclesForm::showObstracles(QVariant coordinate, QVariant radius)
             else if (sortSearchFilterObstracleModel->index(row, 8).data().isValid() && sortSearchFilterObstracleModel->index(row, 9).data().isValid()) {
                 obstraclePoint.type = ObstraclePoint::GROUP;
             }
+            // if point is AD or PP
+            if (sortSearchFilterObstracleModel->index(row, 2).data().toString().contains(QRegExp("^KTA$"))) {
+                qDebug() << "KTA";
+                obstraclePoint.type = ObstraclePoint::KTA;
+                obstraclePoint.height = QString();
+            }
+
             obstraclePoint.id = sortSearchFilterObstracleModel->index(row, 1).data(Qt::DisplayRole).toString();
             mapView->addObstracle(obstraclePoint);
 
@@ -420,6 +427,7 @@ void ObstraclesForm::importData()
 
         QString latStr = importDialog->getLatitude();
         QString lonStr = importDialog->getLongetude();
+        QStringList coordinatesKTA = importDialog->getCoordiantesKTA();
         Document doc(importDialog->getFileName());
         if (!doc.load())
             return;
@@ -470,6 +478,13 @@ void ObstraclesForm::importData()
                 }
                 DatabaseAccess::getInstance()->insertObstracle(idRecordAirfield, values);
                 values.clear();
+            }
+            if (coordinatesKTA.size() == 2) {
+                values.insert("id", QString::number(idRecordAirfield));
+                values.insert("name", QString("KTA"));
+                values.insert("latitude", QString::number(coordinatesKTA.at(0).toDouble(), 'f', 1).prepend(latStr));
+                values.insert("longitude", QString::number(coordinatesKTA.at(1).toDouble(), 'f', 1).prepend(lonStr));
+                DatabaseAccess::getInstance()->insertObstracle(idRecordAirfield, values);
             }
         }
         updateModelAirfields();

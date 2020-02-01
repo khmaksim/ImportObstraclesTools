@@ -13,6 +13,9 @@ ImportDialog::ImportDialog(QWidget *parent) :
     connect(ui->cancelButton, &QPushButton::clicked, this, &QDialog::reject);
     connect(ui->importButton, &QPushButton::clicked, this, &QDialog::accept);
     connect(ui->fileLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(enableButton()));
+    connect(ui->nameAirfieldLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(enableButton()));
+    connect(ui->latitudeKtaLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(enableButton()));
+    connect(ui->longitudeKtaLineEdit, SIGNAL(textChanged(const QString&)), this, SLOT(enableButton()));
 }
 
 ImportDialog::~ImportDialog()
@@ -32,7 +35,8 @@ void ImportDialog::selectFile()
 
 void ImportDialog::enableButton()
 {
-    ui->importButton->setEnabled(!ui->fileLineEdit->text().isEmpty() && !ui->nameAirfieldLineEdit->text().isEmpty());
+    ui->importButton->setEnabled(!ui->fileLineEdit->text().isEmpty() && !ui->nameAirfieldLineEdit->text().isEmpty() &&
+                                 !ui->latitudeKtaLineEdit->text().isEmpty() && !ui->longitudeKtaLineEdit->text().isEmpty());
 }
 
 QString ImportDialog::getFileName() const
@@ -58,4 +62,10 @@ QString ImportDialog::getLatitude() const
 QString ImportDialog::getLongetude() const
 {
     return ui->eastRadioButton->isChecked() ? tr("e") : tr("w");
+}
+
+QStringList ImportDialog::getCoordiantesKTA() const
+{
+    return QStringList() << ui->latitudeKtaLineEdit->text().simplified().replace(",", ".")
+                         << ui->longitudeKtaLineEdit->text().simplified().replace(",", ".");
 }

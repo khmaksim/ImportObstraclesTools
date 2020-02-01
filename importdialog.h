@@ -19,6 +19,7 @@ class ImportDialog : public QDialog
         QString getCodeICAO() const;
         QString getLatitude() const;
         QString getLongetude() const;
+        QStringList getCoordiantesKTA() const;
 
     private:
         Ui::ImportDialog *ui;

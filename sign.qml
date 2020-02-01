@@ -12,7 +12,13 @@ MapQuickItem {
     sourceItem: Column {
         Row {
             Image {
-                property var srcImgSign: ["qrc:/images/res/img/N.png", "qrc:/images/res/img/A.png", "qrc:/images/res/img/M.png", "qrc:/images/res/img/G.png"]
+                property var srcImgSign: [
+                    "qrc:/images/res/img/N.png",
+                    "qrc:/images/res/img/A.png",
+                    "qrc:/images/res/img/M.png",
+                    "qrc:/images/res/img/G.png",
+                    "qrc:/images/res/img/KTA.png"
+                ]
                 id: image
                 source: srcImgSign[type]
                 width: type == 0 ? 5 : 20
