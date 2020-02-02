@@ -2,12 +2,18 @@
 #include "ui_importdialog.h"
 #include <QDebug>
 #include <QFileDialog>
+#include <QRegExpValidator>
 
 ImportDialog::ImportDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ImportDialog)
 {
     ui->setupUi(this);
+
+    ui->nameAirfieldLineEdit->setValidator(new QRegExpValidator(QRegExp("[A-ZА-Яa-zа-я\\s-\\d]+")));
+    ui->codeIcaoLineEdit->setValidator(new QRegExpValidator(QRegExp("[\\dA-Za-z]+")));
+    ui->latitudeKtaLineEdit->setValidator(new QRegExpValidator(QRegExp("\\d+(\\.|\\,)?\\d{,2}")));
+    ui->longitudeKtaLineEdit->setValidator(new QRegExpValidator(QRegExp("\\d+(\\.|\\,)?\\d{,2}")));
 
     connect(ui->selectFileButton, SIGNAL(clicked()), this, SLOT(selectFile()));
     connect(ui->cancelButton, &QPushButton::clicked, this, &QDialog::reject);
