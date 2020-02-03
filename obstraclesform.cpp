@@ -283,7 +283,8 @@ void ObstraclesForm::exportToFile()
 
     QTextStream out(&file);
     for (int row = 0; row < sortSearchFilterObstracleModel->rowCount(); row++) {
-        if (sortSearchFilterObstracleModel->index(row, 0).data(Qt::CheckStateRole).toBool()) {
+        if (sortSearchFilterObstracleModel->index(row, 0).data(Qt::CheckStateRole).toBool() &&
+                 sortSearchFilterObstracleModel->index(row, 12).data().toInt() > 0) {
             if (sortSearchFilterObstracleModel->index(row, 6).data().isValid() && sortSearchFilterObstracleModel->index(row, 7).data().isValid()) {
                 out << sortSearchFilterObstracleModel->index(row, 6).data().toString().replace("с", "N").replace("ю", "S").remove(QRegExp("[\\s\\.]")).append("0") << endl;
                 out << sortSearchFilterObstracleModel->index(row, 7).data().toString().replace("в", "E").replace("з", "W").remove(QRegExp("[\\s\\.]")).append("0") << endl;
