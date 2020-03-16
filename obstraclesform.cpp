@@ -49,6 +49,12 @@ ObstraclesForm::ObstraclesForm(QWidget *parent) :
     importButton->setIconSize(QSize(32, 32));
     importButton->setIcon(QIcon(":/images/res/img/icons8-microsoft-excel-48.png"));
     importButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    removeAirfieldButton = new QToolButton(this);
+    removeAirfieldButton->setEnabled(false);
+    removeAirfieldButton->setText(tr("Remove airfield"));
+    removeAirfieldButton->setIconSize(QSize(32, 32));
+    removeAirfieldButton->setIcon(QIcon(":/images/res/img/icons8-delete-48.png"));
+    removeAirfieldButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
     displayOnMapButton = new QToolButton(this);
     displayOnMapButton->setEnabled(false);
     displayOnMapButton->setText(tr("Unhide"));
@@ -60,6 +66,7 @@ ObstraclesForm::ObstraclesForm(QWidget *parent) :
     toolBar = new QToolBar(this);
     toolBar->addWidget(exportButton);
     toolBar->addWidget(importButton);
+    toolBar->addWidget(removeAirfieldButton);
     toolBar->addWidget(displayOnMapButton);
 
     sideBar = new SideBar(this);
@@ -133,6 +140,7 @@ ObstraclesForm::ObstraclesForm(QWidget *parent) :
 
     connect(ui->listView, SIGNAL(clicked(QModelIndex)), sideBar, SLOT(resetFilter()));
     connect(ui->listView, SIGNAL(clicked(QModelIndex)), this, SLOT(updateModelObstracles(QModelIndex)));
+    connect(ui->listView, SIGNAL(clicked(QModelIndex)), this, SLOT(enabledToolButton()));
     connect(obstraclesModel, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(enabledToolButton()));
     connect(obstraclesModel, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(updateStatusSelectedObstracles()));
     connect(sortSearchFilterObstracleModel, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateStatusSelectedObstracles()));
@@ -141,6 +149,7 @@ ObstraclesForm::ObstraclesForm(QWidget *parent) :
     connect(sortSearchFilterObstracleModel, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(setCheckedAllRowTable()));
     connect(exportButton, SIGNAL(clicked(bool)), this, SLOT(exportToFile()));
     connect(importButton, SIGNAL(clicked(bool)), this, SLOT(importData()));
+    connect(removeAirfieldButton, SIGNAL(clicked(bool)), this, SLOT(removeAirfield()));
     connect(displayOnMapButton, SIGNAL(clicked(bool)), this, SLOT(showObstracles()));
     connect(ui->searchLineEdit, SIGNAL(textChanged(QString)), searchAirfieldsModel, SLOT(setFilterRegExp(QString)));
     connect(sideBar, SIGNAL(searchTextChanged(QString)), sortSearchFilterObstracleModel, SLOT(setFilterRegExp(QString)));
@@ -213,6 +222,11 @@ void ObstraclesForm::updateModelAirfields()
 
 void ObstraclesForm::updateModelObstracles(const QModelIndex &index)
 {
+    // remove all rows
+    while (obstraclesModel->rowCount() > 0) {
+        obstraclesModel->removeRow(0);
+    }
+
     int idAirfield = -1;
     if (index.isValid())
         idAirfield = searchAirfieldsModel->data(index, ListItemDelegate::IdRole).toInt();
@@ -222,10 +236,6 @@ void ObstraclesForm::updateModelObstracles(const QModelIndex &index)
     QVector<QVariantList> obstracles = DatabaseAccess::getInstance()->getObstracles(idAirfield);
     // uncheked header
     qobject_cast<QGroupHeaderView*>(ui->tableView->horizontalHeader())->setChecked(false);
-    // remove all rows
-    while (obstraclesModel->rowCount() > 0) {
-        obstraclesModel->removeRow(0);
-    }
 
     QStringList typesObstracle = QStringList();
     for (int i = 0; i < obstracles.size(); i++) {
@@ -254,15 +264,20 @@ void ObstraclesForm::updateModelObstracles(const QModelIndex &index)
 
 void ObstraclesForm::enabledToolButton()
 {
-    bool isEnable = false;
-    for (int row = 0; row < sortSearchFilterObstracleModel->rowCount(); row++) {
-        if (sortSearchFilterObstracleModel->index(row, 0).data(Qt::CheckStateRole).toBool()) {
-            isEnable = true;
-            break;
-        }
+    if (sender() == ui->listView) {
+        removeAirfieldButton->setEnabled(ui->listView->selectionModel()->selection().count() > 0);
     }
-    exportButton->setEnabled(isEnable);
-    displayOnMapButton->setEnabled(isEnable);
+    else {
+        bool isEnable = false;
+        for (int row = 0; row < sortSearchFilterObstracleModel->rowCount(); row++) {
+            if (sortSearchFilterObstracleModel->index(row, 0).data(Qt::CheckStateRole).toBool()) {
+                isEnable = true;
+                break;
+            }
+        }
+        exportButton->setEnabled(isEnable);
+        displayOnMapButton->setEnabled(isEnable);
+    }
     return;
 }
 
@@ -458,10 +473,10 @@ void ObstraclesForm::importData()
 
                     switch (col) {
                         case 1:
-                            values.insert("id", var.toString());
+                            values.insert("id", var.toString().simplified());
                             break;
                         case 2:
-                            values.insert("name", var.toString());
+                            values.insert("name", var.toString().simplified());
                             break;
                         case 3:
                             values.insert("latitude", QString::number(var.toString().toDouble(), 'f', 1).prepend(latStr));
@@ -470,10 +485,10 @@ void ObstraclesForm::importData()
                             values.insert("longitude", QString::number(var.toString().toDouble(), 'f', 1).prepend(lonStr));
                             break;
                         case 5:
-                            values.insert("orthometric_height", var.toString());
+                            values.insert("orthometric_height", var.toString().simplified());
                             break;
                         case 6:
-                            values.insert("night_marking", var.toString());
+                            values.insert("night_marking", var.toString().simplified());
                             break;
                     }
                 }
@@ -490,4 +505,15 @@ void ObstraclesForm::importData()
         }
         updateModelAirfields();
     }    
+}
+
+void ObstraclesForm::removeAirfield()
+{
+    if (ui->listView->selectionModel()->selection().count() > 0) {
+        int idAirfield = ui->listView->selectionModel()->currentIndex().data(ListItemDelegate::IdRole).toInt();
+        if (DatabaseAccess::getInstance()->removeAirfield(idAirfield)) {
+            updateModelAirfields();
+            updateModelObstracles();
+        }
+    }
 }

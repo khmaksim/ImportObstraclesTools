@@ -251,3 +251,16 @@ void DatabaseAccess::insertObstracle(int idAirfield, QMap<QString, QString> obst
 //        qDebug() << "Rollback transaction";
 //    }
 }
+
+bool DatabaseAccess::removeAirfield(int idAirfield)
+{
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM airfield WHERE id = ?");
+    query.addBindValue(idAirfield);
+    if (!query.exec()) {
+        qDebug() << query.lastError().text() << query.lastQuery() << query.boundValues();
+        return false;
+    }
+    return true;
+}

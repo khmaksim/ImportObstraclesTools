@@ -19,6 +19,7 @@ class DatabaseAccess : public QObject
         bool removeTag(const QString&);
         int insertAirfield(const QString&, const QString&);
         void insertObstracle(int idAirfield, QMap<QString, QString> obstracle);
+        bool removeAirfield(int idAirfield);
 
     private:
         DatabaseAccess(QObject *parent = nullptr);

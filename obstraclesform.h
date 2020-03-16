@@ -35,6 +35,7 @@ class ObstraclesForm : public QWidget
         QToolBar *toolBar;
         QToolButton *exportButton;
         QToolButton *importButton;
+        QToolButton *removeAirfieldButton;
         QToolButton *displayOnMapButton;
         QStandardItemModel *airfieldsModel;
         QStandardItemModel *obstraclesModel;
@@ -62,6 +63,7 @@ class ObstraclesForm : public QWidget
         void setFilterRadius();
         void showObstracles(QVariant c = QVariant(), QVariant radius = QVariant(0));
         void updateStatusSelectedObstracles();
+        void removeAirfield();
 };
 
 #endif // OBSTRACLESFORM_H
